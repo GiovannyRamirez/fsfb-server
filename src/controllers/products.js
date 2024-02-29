@@ -1,9 +1,31 @@
+const pool = require("../database/connection");
+const { PRODUCTS } = require("../database/queries");
+
 const { okResponse } = require("../responses");
 
 const createProduct = async (req, res, next) => {
   try {
+    const {
+      body: { name, description, price },
+      user: { userId },
+    } = req;
+
+    const productToCreate = {
+      name,
+      description,
+      price,
+      id_user: userId,
+    };
+
+    const insertQuery = PRODUCTS.INSERT(productToCreate);
+    const { insertId: id_product } = await pool.query(insertQuery);
+
     const response = {
-      data: "Creating product",
+      message: "Product created",
+      productInfo: {
+        ...productToCreate,
+        id_product,
+      },
     };
 
     return okResponse(res, response, 201);
@@ -14,11 +36,19 @@ const createProduct = async (req, res, next) => {
 
 const getProducts = async (req, res, next) => {
   try {
-    const response = {
-      data: "Getting products",
-    };
+    const { userId } = req.user;
 
-    return okResponse(res, response);
+    const getQuery = PRODUCTS.GET({ userId });
+    const products = await pool.query(getQuery);
+
+    if (!products.length)
+      return okResponse(
+        res,
+        { message: `No products for ${userId} user` },
+        204
+      );
+
+    return okResponse(res, { products });
   } catch (err) {
     next(err);
   }
@@ -26,8 +56,28 @@ const getProducts = async (req, res, next) => {
 
 const updateProduct = async (req, res, next) => {
   try {
+    const {
+      params: { productId: id_product },
+      body: { name, description, price },
+      user: { userId: id_user },
+    } = req;
+
+    const newProductInfo = {
+      id_product,
+      name,
+      description,
+      price,
+    };
+
+    const updateQuery = PRODUCTS.UPDATE(newProductInfo);
+    await pool.query(updateQuery);
+
     const response = {
-      data: "Updating product",
+      message: "Product was updated",
+      productInfo: {
+        ...newProductInfo,
+        id_user,
+      },
     };
 
     return okResponse(res, response);
@@ -38,11 +88,12 @@ const updateProduct = async (req, res, next) => {
 
 const deleteProduct = async (req, res, next) => {
   try {
-    const response = {
-      data: "Deleting product",
-    };
+    const { productId: id_product } = req.params;
 
-    return okResponse(res, response);
+    const deleteQuery = PRODUCTS.DELETE({ id_product });
+    await pool.query(deleteQuery);
+
+    return okResponse(res, { message: "Product was deleted" });
   } catch (err) {
     next(err);
   }
