@@ -27,3 +27,4 @@ First of all you need to create an **_.env_** file and configure enviromental va
 - dotenv: For manage environment variables considering that NodeJS v20.x just have an _experimental support for .env files_
 - express: Framework to configure a basic web app application based in NodeJS
 - jsonwebtoken: Used to generate and verify jwt authentication
+- bcrypt: Used to hash user password and verify it on login
