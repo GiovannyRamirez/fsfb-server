@@ -2,6 +2,7 @@ const dotenv = require("dotenv");
 const express = require("express");
 
 const { errorHandlerMiddleware } = require("./middlewares/errorHandler");
+const { jwtValidationMiddleware } = require("./middlewares/jwtValidation");
 
 const { ENDPOINTS } = require("./constants/endpoints");
 
@@ -14,7 +15,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use(ENDPOINTS.PRODUCTS.BASE, productsRouter);
+app.use(ENDPOINTS.PRODUCTS.BASE, [jwtValidationMiddleware, productsRouter]);
 
 app.use(errorHandlerMiddleware);
 
