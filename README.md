@@ -26,6 +26,8 @@ First of all you need to create an **_.env_** file and configure enviroment vari
 - DB_PORT
 - DB_USER
 - DB_PASS
+- DB_USERS_TABLE
+- DB_PRODUCTS_TABLE
 
 # Dependencies used
 
