@@ -6,5 +6,10 @@ module.exports = {
       ALL: "/all",
       SPECIFIC: "/:productId",
     },
+    USERS: {
+      BASE: "/users",
+      REGISTER: "/register",
+      LOGIN: "/login",
+    },
   },
 };
