@@ -1,4 +1,5 @@
-const dotenv = require("dotenv");
+require("dotenv").config();
+
 const express = require("express");
 
 const { errorHandlerMiddleware } = require("./middlewares/errorHandler");
@@ -9,9 +10,7 @@ const { ENDPOINTS } = require("./constants/endpoints");
 const productsRouter = require("./routes/products");
 const usersRouter = require("./routes/users");
 
-dotenv.config();
-
-const PORT = process.env.PORT || 8000;
+const { PORT = 8000 } = process.env;
 const app = express();
 
 app.use(express.json());

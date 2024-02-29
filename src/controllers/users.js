@@ -1,12 +1,28 @@
 const bcrypt = require("bcrypt");
 
-const { okResponse } = require("../responses");
-
 const { generateToken } = require("../utils/token");
+
+const pool = require("../database/connection");
+const { USERS } = require("../database/queries");
+
+const { okResponse } = require("../responses");
 
 const createUser = async (req, res, next) => {
   try {
     const { name, email, password } = req.body;
+
+    const userQuery = USERS.GET({ email });
+    const user = await pool.query(userQuery);
+    const userExists = !!user.length;
+
+    if (userExists)
+      return okResponse(
+        res,
+        {
+          error: "User can not be created because email already exists",
+        },
+        202
+      );
 
     const encPasword = await bcrypt.hash(password, 16);
 
@@ -16,12 +32,20 @@ const createUser = async (req, res, next) => {
       hash: encPasword,
     };
 
-    // TODO Save user in DB, get id and pass it to token generation
-    const token = generateToken({ name, email });
+    const insertQuery = USERS.INSERT(userToCreate);
 
-    const response = {
+    const { insertId: userId } = await pool.query(insertQuery);
+
+    const createdUser = {
+      userId,
       name,
       email,
+    };
+
+    const token = generateToken(createdUser);
+
+    const response = {
+      ...createdUser,
       token,
     };
 
@@ -35,20 +59,29 @@ const loginUser = async (req, res, next) => {
   try {
     const { email, password } = req.body;
 
-    // TODO Read user from DB to get name, password (for camparation) and id,to get a token
-    // if (!user)
-    //   return okResponse(res, { error: "User or password incorrect" }, 404);
+    const userQuery = USERS.GET({ email });
+    const user = await pool.query(userQuery);
+    const invalidUser = !user.length;
 
-    // const isValidPassword = await bcrypt.compare(password, "asdasd");
+    if (invalidUser)
+      return okResponse(res, { error: "User or password incorrect" }, 404);
 
-    // if (isValidPassword)
-    //   return okResponse(res, { error: "User or password incorrect" }, 404);
+    const [{ id_user: userId, name, hash }] = user;
+    const isValidPassword = await bcrypt.compare(password, hash);
 
-    const token = generateToken({ email });
+    if (!isValidPassword)
+      return okResponse(res, { error: "User or password incorrect" }, 404);
+
+    const userToLogin = {
+      userId,
+      name,
+      email,
+    };
+
+    const token = generateToken(userToLogin);
 
     const response = {
-      // name,
-      email,
+      ...userToLogin,
       token,
     };
 
