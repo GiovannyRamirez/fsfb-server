@@ -19,8 +19,11 @@ This project is a server to manage users and products.
 First of all you need to create an **_.env_** file and configure enviromental variables:
 
 - PORT
+- JWT_SECRET
+- JWT_EXPIRATION
 
 # Dependencies used
 
 - dotenv: For manage environment variables considering that NodeJS v20.x just have an _experimental support for .env files_
 - express: Framework to configure a basic web app application based in NodeJS
+- jsonwebtoken: Used to generate and verify jwt authentication
