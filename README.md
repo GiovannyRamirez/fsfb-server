@@ -36,3 +36,4 @@ First of all you need to create an **_.env_** file and configure enviroment vari
 - jsonwebtoken: Used to generate and verify jwt authentication
 - bcrypt: Used to hash user password and verify it on login
 - mysql2: Used to get connection to MySQL Database
+- cors: Used to prevent cors error with frontend integration

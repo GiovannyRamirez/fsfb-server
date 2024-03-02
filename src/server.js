@@ -1,5 +1,6 @@
 require("dotenv").config();
 
+const cors = require("cors");
 const express = require("express");
 
 const { errorHandlerMiddleware } = require("./middlewares/errorHandler");
@@ -14,6 +15,7 @@ const { PORT = 8000 } = process.env;
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 app.use(ENDPOINTS.PRODUCTS.BASE, [jwtValidationMiddleware, productsRouter]);
 app.use(ENDPOINTS.USERS.BASE, usersRouter);
