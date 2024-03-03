@@ -1,8 +1,9 @@
 require("dotenv").config();
 
-const cors = require("cors");
 const express = require("express");
+const cors = require("cors");
 
+const { bodyValidation } = require("./middlewares/bodyValidator");
 const { errorHandlerMiddleware } = require("./middlewares/errorHandler");
 const { jwtValidationMiddleware } = require("./middlewares/jwtValidation");
 
@@ -16,6 +17,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
+app.use(bodyValidation);
 
 app.use(ENDPOINTS.PRODUCTS.BASE, [jwtValidationMiddleware, productsRouter]);
 app.use(ENDPOINTS.USERS.BASE, usersRouter);
