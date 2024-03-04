@@ -1,0 +1,1156 @@
+{
+	"info": {
+		"_postman_id": "8a38b3d7-0bf3-4cca-80a0-7a864f211280",
+		"name": "Fundacion Santa Fe de Bogotá",
+		"description": "This is a collection of endpoints to manage users and products.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14755769"
+	},
+	"item": [
+		{
+			"name": "PRODUCTS",
+			"item": [
+				{
+					"name": "LIST",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "app-token",
+								"value": "{{appToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/products/all",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products",
+								"all"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "TokenExpired",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "app-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJuYW1lIjoiTmV3IFVzZXIiLCJlbWFpbCI6Im5ld0B1c2VyLnRlc3QiLCJpYXQiOjE3MDk1NTgzNTMsImV4...",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://fsfb-server.up.railway.app/products/all",
+									"protocol": "https",
+									"host": [
+										"fsfb-server",
+										"up",
+										"railway",
+										"app"
+									],
+									"path": [
+										"products",
+										"all"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "81"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"51-eQmiiZg5krQu0vjWyMaXduHwtFo\""
+								},
+								{
+									"key": "date",
+									"value": "Mon, 04 Mar 2024 13:20:10 GMT"
+								},
+								{
+									"key": "server",
+									"value": "railway"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Something went wrong: jwtValidateExpiration\",\n    \"error\": \"Token expired\"\n}"
+						},
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "app-token",
+										"value": "{{appToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/products/all",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"products",
+										"all"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "163"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"a3-SB9Koox2aHne72oCDMg/CWxDqCQ\""
+								},
+								{
+									"key": "date",
+									"value": "Mon, 04 Mar 2024 13:22:55 GMT"
+								},
+								{
+									"key": "server",
+									"value": "railway"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"OK\",\n    \"error\": false,\n    \"products\": [\n        {\n            \"id_product\": 19,\n            \"name\": \"Product Test\",\n            \"description\": \"Product description updated again\",\n            \"price\": \"15.4\",\n            \"id_user\": \"11\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "CREATE",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "app-token",
+								"value": "{{appToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"New Product\",\r\n    \"description\": \"New Product Description\",\r\n    \"price\": \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/products/all",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products",
+								"all"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "TokenExpired",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "app-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJuYW1lIjoiTmV3IFVzZXIiLCJlbWFpbCI6Im5ld0B1c2VyLnRlc3QiLCJpYXQiOjE3MDk1NTgzNTMsImV4...",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"New Product\",\r\n    \"description\": \"New Product Description\",\r\n    \"price\": \"123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://fsfb-server.up.railway.app/products/all",
+									"protocol": "https",
+									"host": [
+										"fsfb-server",
+										"up",
+										"railway",
+										"app"
+									],
+									"path": [
+										"products",
+										"all"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "81"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"51-eQmiiZg5krQu0vjWyMaXduHwtFo\""
+								},
+								{
+									"key": "date",
+									"value": "Mon, 04 Mar 2024 13:20:30 GMT"
+								},
+								{
+									"key": "server",
+									"value": "railway"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Something went wrong: jwtValidateExpiration\",\n    \"error\": \"Token expired\"\n}"
+						},
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "app-token",
+										"value": "{{appToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"New Product\",\r\n    \"description\": \"New Product Description\",\r\n    \"price\": \"123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/products/all",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"products",
+										"all"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "163"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"a3-aENzMxaLuBwpDmsj/PGQiVuqYnM\""
+								},
+								{
+									"key": "date",
+									"value": "Mon, 04 Mar 2024 13:21:52 GMT"
+								},
+								{
+									"key": "server",
+									"value": "railway"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Product created\",\n    \"error\": false,\n    \"productInfo\": {\n        \"name\": \"New Product\",\n        \"description\": \"New Product Description\",\n        \"price\": \"123\",\n        \"id_user\": 11,\n        \"id_product\": 19\n    }\n}"
+						},
+						{
+							"name": "FormErrors",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "app-token",
+										"value": "{{appToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Ne\",\r\n    \"description\": \"Ne\",\r\n    \"price\": 123\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/products/all",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"products",
+										"all"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "214"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"d6-7Rh+lw4/XjksKsDmF3/MfastTuo\""
+								},
+								{
+									"key": "date",
+									"value": "Mon, 04 Mar 2024 13:23:44 GMT"
+								},
+								{
+									"key": "server",
+									"value": "railway"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"OK\",\n    \"error\": [\n        {\n            \"name\": {\n                \"_errors\": [\n                    \"Debe contener al menos 3 caracteres\"\n                ]\n            }\n        },\n        {\n            \"description\": {\n                \"_errors\": [\n                    \"Debe contener al menos 3 caracteres\"\n                ]\n            }\n        },\n        {\n            \"price\": {\n                \"_errors\": [\n                    \"Expected string, received number\"\n                ]\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "UPDATE",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "app-token",
+								"value": "{{appToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Product Test\",\r\n    \"description\": \"Product description updated again\",\r\n    \"price\": \"15.4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/products/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "TokenExpired",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "app-token",
+										"value": "{{appToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Product Test\",\r\n    \"description\": \"Product description updated again\",\r\n    \"price\": \"15.4\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/products/1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"products",
+										"1"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "81"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"51-eQmiiZg5krQu0vjWyMaXduHwtFo\""
+								},
+								{
+									"key": "date",
+									"value": "Mon, 04 Mar 2024 13:20:54 GMT"
+								},
+								{
+									"key": "server",
+									"value": "railway"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Something went wrong: jwtValidateExpiration\",\n    \"error\": \"Token expired\"\n}"
+						},
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "app-token",
+										"value": "{{appToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Product Test\",\r\n    \"description\": \"Product description updated again\",\r\n    \"price\": \"15.4\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/products/19",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"products",
+										"19"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "181"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"b5-C7Innh8cNTki4e/cc/gAkeDcLP8\""
+								},
+								{
+									"key": "date",
+									"value": "Mon, 04 Mar 2024 13:22:27 GMT"
+								},
+								{
+									"key": "server",
+									"value": "railway"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Product was updated\",\n    \"error\": false,\n    \"productInfo\": {\n        \"id_product\": \"19\",\n        \"name\": \"Product Test\",\n        \"description\": \"Product description updated again\",\n        \"price\": \"15.4\",\n        \"id_user\": 11\n    }\n}"
+						},
+						{
+							"name": "FormErrors",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "app-token",
+										"value": "{{appToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Pr\",\r\n    \"description\": \"Pr\",\r\n    \"price\": 15\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/products/19",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"products",
+										"19"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "214"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"d6-7Rh+lw4/XjksKsDmF3/MfastTuo\""
+								},
+								{
+									"key": "date",
+									"value": "Mon, 04 Mar 2024 13:24:11 GMT"
+								},
+								{
+									"key": "server",
+									"value": "railway"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"OK\",\n    \"error\": [\n        {\n            \"name\": {\n                \"_errors\": [\n                    \"Debe contener al menos 3 caracteres\"\n                ]\n            }\n        },\n        {\n            \"description\": {\n                \"_errors\": [\n                    \"Debe contener al menos 3 caracteres\"\n                ]\n            }\n        },\n        {\n            \"price\": {\n                \"_errors\": [\n                    \"Expected string, received number\"\n                ]\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "REMOVE",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "app-token",
+								"value": "{{appToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/products/2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "TokenExpired",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "app-token",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJuYW1lIjoiTmV3IFVzZXIiLCJlbWFpbCI6Im5ld0B1c2VyLnRlc3QiLCJpYXQiOjE3MDk1NTgzNTMsImV4...",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://fsfb-server.up.railway.app/products/1",
+									"protocol": "https",
+									"host": [
+										"fsfb-server",
+										"up",
+										"railway",
+										"app"
+									],
+									"path": [
+										"products",
+										"1"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "81"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"51-eQmiiZg5krQu0vjWyMaXduHwtFo\""
+								},
+								{
+									"key": "date",
+									"value": "Mon, 04 Mar 2024 13:21:09 GMT"
+								},
+								{
+									"key": "server",
+									"value": "railway"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Something went wrong: jwtValidateExpiration\",\n    \"error\": \"Token expired\"\n}"
+						},
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "app-token",
+										"value": "{{appToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/products/19",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"products",
+										"19"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "47"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"2f-IyR2HVeStoHc+vDP94MBcQJemRw\""
+								},
+								{
+									"key": "date",
+									"value": "Mon, 04 Mar 2024 13:23:20 GMT"
+								},
+								{
+									"key": "server",
+									"value": "railway"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Product was deleted\",\n    \"error\": false\n}"
+						}
+					]
+				}
+			],
+			"description": "Products managemet based in userId extracted from jwt app-token."
+		},
+		{
+			"name": "USERS",
+			"item": [
+				{
+					"name": "REGISTER",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"New User\",\r\n    \"email\": \"new@user.test\",\r\n    \"password\": \"4Bcd*\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"New User\",\r\n    \"email\": \"new@user.test\",\r\n    \"password\": \"4Bcd*\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://fsfb-server.up.railway.app/users/register",
+									"protocol": "https",
+									"host": [
+										"fsfb-server",
+										"up",
+										"railway",
+										"app"
+									],
+									"path": [
+										"users",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "295"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"127-rlCv4Sab6GXMIf15aio0rZBseCQ\""
+								},
+								{
+									"key": "date",
+									"value": "Mon, 04 Mar 2024 13:17:46 GMT"
+								},
+								{
+									"key": "server",
+									"value": "railway"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"OK\",\n    \"error\": false,\n    \"userId\": 11,\n    \"name\": \"New User\",\n    \"email\": \"new@user.test\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJuYW1lIjoiTmV3IFVzZXIiLCJlbWFpbCI6Im5ld0B1c2VyLnRlc3QiLCJpYXQiOjE3MDk1NTgyNjYsImV4cCI6MTcwOTY0NDY2Nn0.XAXrah9RSdscqw4qJt-gIxFI2ob9NvuPHtGClviO9aE\"\n}"
+						},
+						{
+							"name": "FormErrors",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Ne\",\r\n    \"email\": \"newuser.test\",\r\n    \"password\": \"4Bcd\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/users/register",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"users",
+										"register"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "279"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"117-Qvp1avTpLiDC8Pro6h+f6GWC+Ek\""
+								},
+								{
+									"key": "date",
+									"value": "Mon, 04 Mar 2024 13:18:14 GMT"
+								},
+								{
+									"key": "server",
+									"value": "railway"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"OK\",\n    \"error\": [\n        {\n            \"name\": {\n                \"_errors\": [\n                    \"Debe contener al menos 3 caracteres\"\n                ]\n            }\n        },\n        {\n            \"email\": {\n                \"_errors\": [\n                    \"Debe ser un correo electrónico válido\"\n                ]\n            }\n        },\n        {\n            \"password\": {\n                \"_errors\": [\n                    \"Debe contener al menos 4 caracteres (1 mayúscula, 1 minúscula, 1 dígito, 1 caracter especial)\"\n                ]\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "LOGIN",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"user@email.com\",\r\n    \"password\": \"4Bcd*\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"new@user.test\",\r\n    \"password\": \"4Bcd*\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://fsfb-server.up.railway.app/users/login",
+									"protocol": "https",
+									"host": [
+										"fsfb-server",
+										"up",
+										"railway",
+										"app"
+									],
+									"path": [
+										"users",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "295"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"127-SfqKIZCD8Y3aWvNGN0aM1Pd4L54\""
+								},
+								{
+									"key": "date",
+									"value": "Mon, 04 Mar 2024 13:19:13 GMT"
+								},
+								{
+									"key": "server",
+									"value": "railway"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"OK\",\n    \"error\": false,\n    \"userId\": 11,\n    \"name\": \"New User\",\n    \"email\": \"new@user.test\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJuYW1lIjoiTmV3IFVzZXIiLCJlbWFpbCI6Im5ld0B1c2VyLnRlc3QiLCJpYXQiOjE3MDk1NTgzNTMsImV4cCI6MTcwOTY0NDc1M30.sqAHCBGwWFuBIZsbFb7imVWnWJ3cd4-EqHS5NtCb0VQ\"\n}"
+						},
+						{
+							"name": "Fail",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"new@user.tst\",\r\n    \"password\": \"4Bcd*\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/users/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"users",
+										"login"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "53"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"35-UdEUOXx6jHHPrlLa6n0795oVn7M\""
+								},
+								{
+									"key": "date",
+									"value": "Mon, 04 Mar 2024 13:19:30 GMT"
+								},
+								{
+									"key": "server",
+									"value": "railway"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"OK\",\n    \"error\": \"User or password incorrect\"\n}"
+						},
+						{
+							"name": "FormErrors",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"newuser.test\",\r\n    \"password\": \"4Bcd\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/users/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"users",
+										"login"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "218"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"da-3ORAX4e3VwKp1j48vzgYBYkY+DY\""
+								},
+								{
+									"key": "date",
+									"value": "Mon, 04 Mar 2024 13:19:51 GMT"
+								},
+								{
+									"key": "server",
+									"value": "railway"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"OK\",\n    \"error\": [\n        {\n            \"email\": {\n                \"_errors\": [\n                    \"Debe ser un correo electrónico válido\"\n                ]\n            }\n        },\n        {\n            \"password\": {\n                \"_errors\": [\n                    \"Debe contener al menos 4 caracteres (1 mayúscula, 1 minúscula, 1 dígito, 1 caracter especial)\"\n                ]\n            }\n        }\n    ]\n}"
+						}
+					]
+				}
+			],
+			"description": "Users management."
+		}
+	]
+}
